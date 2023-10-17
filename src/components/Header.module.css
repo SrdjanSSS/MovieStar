@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 700px;
+  z-index: 1;
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+.boxContainer {
+  align-self: flex-end;
+  padding: 40px 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconBox {
+  padding: 18px 20px;
+  border-radius: 100px;
+  background-color: white;
+}
+
+.icon {
+  height: 15px;
+  width: 15px;
+  color: red;
+}
+
+.outerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.boxR {
+  margin-top: 20px;
+  width: 75px;
+  border-radius: 100px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.boxR:hover {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}
+
+.boxL h1 {
+  align-self: flex-end;
+  font-size: 70px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  cursor: default;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.boxL {
+  width: 50%;
+  color: white(246, 43, 43);
+}
+
+.boxL h4 {
+  font-style: italic;
+  font-weight: 100;
+  text-shadow: 2px 2px 4px #000000;
+}

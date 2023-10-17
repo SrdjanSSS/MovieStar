@@ -1,0 +1,70 @@
+.container {
+  position: relative;
+  height: 350px;
+  width: 210px;
+  margin-top: 30px;
+  margin: 30px 11px;
+}
+
+.img {
+  height: 300px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+
+.img:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+  animation: glow 1.5s infinite alternate;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+
+.description h4 {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.description h4:hover {
+  color: rgb(128, 123, 123);
+}
+
+.description p {
+  font-size: small;
+  font-weight: bold;
+  color: rgb(70, 69, 69);
+}
+
+.hoverIconBox {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity ease 0.4s;
+}
+
+.icon {
+  height: 50px;
+}
+
+.imgBox:hover .hoverIconBox {
+  opacity: 0.5;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px 0 #d4d9dc; /* Initial box shadow */
+  }
+  100% {
+    box-shadow: 0 0 15px 5px #d4d9dc; /* Final box shadow (glowing effect) */
+  }
+}

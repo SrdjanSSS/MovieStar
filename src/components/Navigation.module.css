@@ -1,0 +1,43 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  z-index: 2;
+}
+.navBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+
+.navBox h3,
+h1 {
+  cursor: pointer;
+  font-weight: 100;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.singInBox {
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: small;
+}
+
+.titleBox img {
+  height: 70px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.titleBox {
+  padding: 0;
+}
