@@ -2,6 +2,15 @@
   width: 100%;
   padding: 50px 50px;
   min-height: fit-content;
+  background: linear-gradient(
+    to bottom,
+    black,
+    black,
+    rgb(48, 47, 47),
+    rgb(48, 47, 47),
+    black,
+    black
+  );
 }
 
 .searchBox {
@@ -19,17 +28,25 @@
   align-items: center;
   border: solid;
   border-width: 1px;
-  border-color: rgb(71, 69, 69);
+  border-color: rgb(228, 21, 21);
   padding: 5px;
+  padding-left: 0px;
   border-radius: 3px;
+  width: 80px;
+  transition: width 0.5s ease-in-out;
 }
 
-.inputBox input {
+.input {
   background-color: transparent;
   border: none;
   color: white;
-  width: 300px;
+  width: 100%;
   padding-left: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.inputClicked {
+  width: 300px;
 }
 
 .inputBox input:focus {

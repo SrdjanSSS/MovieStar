@@ -16,3 +16,20 @@
   left: 50%;
   top: 50%;
 }
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 21, 21);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, black, rgb(60, 58, 58));
+}

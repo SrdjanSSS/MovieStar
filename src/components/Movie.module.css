@@ -30,6 +30,7 @@
 .description h4 {
   margin-bottom: 5px;
   cursor: pointer;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .description h4:hover {
@@ -43,28 +44,36 @@
 }
 
 .hoverIconBox {
+  width: 120px;
   cursor: pointer;
   position: absolute;
-  top: 45%;
-  left: 50%;
+  top: 42%;
+  left: 52%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity ease 0.4s;
 }
 
-.icon {
+.hoverIconBox .icon {
   height: 50px;
+  margin: 0px 2px;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
 }
 
 .imgBox:hover .hoverIconBox {
-  opacity: 0.5;
+  opacity: 1;
+}
+
+.imgBox:hover .hoverIconBox .icon:hover {
+  opacity: 1;
 }
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 5px 0 #d4d9dc; /* Initial box shadow */
+    box-shadow: 0 0 5px 0 #d4d9dc;
   }
   100% {
-    box-shadow: 0 0 15px 5px #d4d9dc; /* Final box shadow (glowing effect) */
+    box-shadow: 0 0 15px 5px #d4d9dc;
   }
 }

@@ -1,5 +1,5 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   width: 100%;
   background-color: transparent;
   display: flex;
@@ -7,22 +7,31 @@
   align-items: center;
   padding: 15px 50px;
   z-index: 2;
+  transition: background-color 0.3s ease;
 }
+
+.scrolling {
+  background-color: rgb(12, 12, 12);
+}
+
 .navBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
+  width: 30%;
 }
 
 .navBox h3,
 h1 {
   cursor: pointer;
   font-weight: 100;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .icon {
+  height: 20px;
   cursor: pointer;
+  color: red;
 }
 
 .singInBox {
@@ -40,4 +49,21 @@ h1 {
 
 .titleBox {
   padding: 0;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.acitve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navBox h3:hover {
+  color: rgb(208, 205, 205);
 }
