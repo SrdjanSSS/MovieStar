@@ -5,13 +5,40 @@ import MoviesBox from "./components/MoviesBox";
 import Navigation from "./components/Navigation";
 import axios from "axios";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import Auth from "./auth/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "./firebase";
+import { loginUser, setLoading } from "./features/UserSlice";
 
 function App() {
-  const [movies, setMovies] = useState("");
+  const user = useSelector((state) => state.data.user.user);
+  const reduxLoading = useSelector((state) => state.data.user.isLoading);
+  console.log(reduxLoading);
+  const dispatch = useDispatch();
+
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
   const API_KEY = "0fb32892fbff2e68de652d01e57adc0e ";
   const API_URL = "https://api.themoviedb.org/3";
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(
+          loginUser({
+            uid: authUser.uid,
+            username: authUser.displayName,
+            email: authUser.email,
+          })
+        );
+        dispatch(setLoading(false));
+      } else {
+        dispatch(setLoading(false));
+        console.log("User is not logged in.");
+      }
+    });
+  }, []);
 
   const fetchData = async (searchKey) => {
     try {
@@ -29,10 +56,10 @@ function App() {
       );
       await selectMovie(results[0]);
       setMovies(results);
-      setLoading(false);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -55,20 +82,16 @@ function App() {
 
   const selectMovie = async (movie) => {
     const data = await fetchVideo(movie.id);
-    console.log("MOVIE DATA", data);
     setSelectedMovie(data);
   };
 
-  console.log("MOVIES", movies);
-  console.log("SELECTED MOVIE", selectedMovie);
-
   return (
     <div className="App">
-      {loading ? (
+      {reduxLoading ? (
         <div className="loader-container">
           <ClimbingBoxLoader
             color={"#ff0000"}
-            loading={loading}
+            loading={isloading}
             size={40}
             aria-label="Loading Spinner"
             data-testid="loader"
@@ -76,13 +99,33 @@ function App() {
         </div>
       ) : (
         <>
-          <Navigation />
-          <Header selectedMovie={selectedMovie} movies={movies} />
-          <MoviesBox
-            selectMovie={selectMovie}
-            fetchData={fetchData}
-            movies={movies}
-          />
+          {isloading ? (
+            <div className="loader-container">
+              <ClimbingBoxLoader
+                color={"#ff0000"}
+                loading={isloading}
+                size={40}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </div>
+          ) : (
+            <>
+              {user ? (
+                <>
+                  <Navigation />
+                  <Header selectedMovie={selectedMovie} movies={movies} />
+                  <MoviesBox
+                    selectMovie={selectMovie}
+                    fetchData={fetchData}
+                    movies={movies}
+                  />
+                </>
+              ) : (
+                <Auth />
+              )}
+            </>
+          )}
         </>
       )}
     </div>

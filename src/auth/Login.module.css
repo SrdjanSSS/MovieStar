@@ -1,0 +1,137 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  padding: 50px;
+  border-radius: 5px;
+  width: 30%;
+  background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+  border-color: black;
+}
+
+.container p {
+  color: red;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  border-color: black;
+}
+
+.inputBox .input {
+  padding-left: 10px;
+  margin-bottom: 15px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  width: 100%;
+  color: white;
+  background: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+}
+
+.pageTitle {
+  width: 35%;
+  height: 70px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.questionBox {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  border: solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  border-color: black;
+}
+
+.questionBox h5 {
+  color: rgb(88, 87, 87);
+}
+
+.questionBox p {
+  color: rgb(171, 48, 48);
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.button {
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  background: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  background: linear-gradient(315deg, #3f0d12 0%, #a71d31 35%);
+}
+
+.errorMsg {
+  color: red;
+}
+
+.inputError {
+  padding-left: 10px;
+  margin-bottom: 15px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid red;
+  width: 100%;
+  color: white;
+  background: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+}
+
+.iconBox {
+  width: 35px;
+  background: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  border-radius: 0px 5px 5px 0px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passwordIconBox {
+  width: 35px;
+  background: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  border-radius: 0px 5px 5px 0px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.passwordIconBox:hover {
+  background: linear-gradient(315deg, #3f0d12 0%, #a71d31 35%);
+}
+
+.icon {
+  color: black;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputContainer {
+  display: flex;
+  width: 100%;
+}

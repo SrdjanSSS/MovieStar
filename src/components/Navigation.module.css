@@ -34,11 +34,9 @@ h1 {
   color: red;
 }
 
-.singInBox {
-  background-color: red;
-  padding: 5px 10px;
-  border-radius: 2px;
-  font-size: small;
+.profileBox {
+  display: flex;
+  align-items: center;
 }
 
 .titleBox img {
@@ -66,4 +64,35 @@ h1 {
 
 .navBox h3:hover {
   color: rgb(208, 205, 205);
+}
+
+.userIcon {
+  cursor: pointer;
+  color: red;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.profileBox:hover .username {
+  color: rgb(208, 205, 205);
+}
+
+.profileContainer {
+  position: relative;
+}
+
+.fallingMenu {
+  position: absolute;
+  background-color: rgb(69, 66, 66);
+  border-radius: 5px;
+  padding: 8px;
+  top: 40px;
+  right: 0px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fallingMenu:hover {
+  color: red;
 }
