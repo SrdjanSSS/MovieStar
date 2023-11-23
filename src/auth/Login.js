@@ -5,13 +5,18 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowsToEye,
   faEnvelope,
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const Login = ({ handleChange }) => {
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.data.user.user);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -22,15 +27,13 @@ export const Login = ({ handleChange }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
 
-  const handleLogin = async () => {
-    setIsSubmitted(true);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      if (email.length > 0 && password.length > 0)
-        setError("Wrong Email or Password.");
+  useEffect(() => {
+    if (user) {
+      navigate("/");
     }
+  }, [user, navigate]);
 
+  const handleLogin = async () => {
     if (email.length === 0) {
       setEmailError(true);
       setEmailInclude(false);
@@ -41,6 +44,21 @@ export const Login = ({ handleChange }) => {
     if (email.length > 0 && !email.includes("@" && ".com")) {
       setEmailError(false);
       setEmailInclude(true);
+    }
+
+    setIsSubmitted(true);
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      if (email.length > 0 && password.length > 0)
+        setError("Wrong Email or Password.");
+    }
+  };
+
+  const handleLoginKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
   };
 
@@ -54,13 +72,25 @@ export const Login = ({ handleChange }) => {
     }
   };
 
+  const handleEmailClick = () => {
+    setEmailError(false);
+    setEmailInclude(false);
+  };
+
+  const handlePasswordClick = () => {
+    setPasswordError(false);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.inputBox}>
-        <img className={styles.pageTitle} src={pageTitle} alt="" />
+        <Link to={"/"}>
+          <img className={styles.pageTitle} src={pageTitle} alt="" />
+        </Link>
         <div className={styles.inputContainer}>
           <input
             value={email}
+            onClick={handleEmailClick}
             onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="Email"
@@ -77,6 +107,8 @@ export const Login = ({ handleChange }) => {
         <div className={styles.inputContainer}>
           <input
             value={password}
+            onClick={handlePasswordClick}
+            onKeyDown={handleLoginKeyDown}
             onChange={(e) => setPassword(e.target.value)}
             type={passwordType}
             placeholder="Password"

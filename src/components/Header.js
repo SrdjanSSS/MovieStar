@@ -7,8 +7,11 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import YouTube from "react-youtube";
+import { useSelector } from "react-redux";
 
-const Header = ({ movies, selectedMovie }) => {
+const Header = ({ movies, selectedMovie, setLoginPopup }) => {
+  const user = useSelector((state) => state.data.user.user);
+
   const [trailerPopup, setTrailerPopup] = useState(false);
   const [isTrailerClicked, setIsTrailerClicked] = useState(false);
 
@@ -34,12 +37,16 @@ const Header = ({ movies, selectedMovie }) => {
   };
 
   const handleTrailerPopup = () => {
-    if (!trailerPopup) {
-      setTrailerPopup(true);
-      setIsTrailerClicked(true);
+    if (user) {
+      if (!trailerPopup) {
+        setTrailerPopup(true);
+        setIsTrailerClicked(true);
+      } else {
+        setTrailerPopup(false);
+        setIsTrailerClicked(false);
+      }
     } else {
-      setTrailerPopup(false);
-      setIsTrailerClicked(false);
+      setLoginPopup(true);
     }
   };
 
@@ -58,16 +65,18 @@ const Header = ({ movies, selectedMovie }) => {
           <h1>{selectedMovie.title}</h1>
           <h4>{selectedMovie.overview}</h4>
         </div>
-        <div className={styles.outerBox}>
-          {selectedMovie.videos ? rednderTrailer() : null}
-          <h2>{isTrailerClicked ? "Close Trailer" : "Play Trailer"}</h2>
-          <div onClick={handleTrailerPopup} className={styles.boxR}>
-            <div className={styles.iconBox}>
-              {isTrailerClicked ? (
-                <FontAwesomeIcon className={styles.iconX} icon={faXmark} />
-              ) : (
-                <FontAwesomeIcon className={styles.iconPlay} icon={faPlay} />
-              )}
+        <div className={styles.boxR}>
+          <div className={styles.outerBox}>
+            {selectedMovie.videos ? rednderTrailer() : null}
+            <h2>{isTrailerClicked ? "Close Trailer" : "Play Trailer"}</h2>
+            <div onClick={handleTrailerPopup} className={styles.trailerBtnBox}>
+              <div className={styles.iconBox}>
+                {isTrailerClicked ? (
+                  <FontAwesomeIcon className={styles.iconX} icon={faXmark} />
+                ) : (
+                  <FontAwesomeIcon className={styles.iconPlay} icon={faPlay} />
+                )}
+              </div>
             </div>
           </div>
         </div>

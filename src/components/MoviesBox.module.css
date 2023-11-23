@@ -1,22 +1,19 @@
 .container {
   width: 100%;
-  padding: 50px 50px;
+  min-width: 200px;
+  padding: 5% 4%;
   min-height: fit-content;
-  background: linear-gradient(
-    to bottom,
-    black,
-    black,
-    rgb(48, 47, 47),
-    rgb(48, 47, 47),
-    black,
-    black
-  );
+  background-color: black;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
 }
 
 .searchBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 30px;
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(to right, red, black);
@@ -46,7 +43,7 @@
 }
 
 .inputClicked {
-  width: 300px;
+  width: 18vw;
 }
 
 .inputBox input:focus {
@@ -61,5 +58,127 @@
 .movieBox {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 100px;
+  min-width: 500px;
+}
+
+.genresContainer {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.genres {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  gap: 20px;
+  border: solid;
+  padding: 1%;
+  border-width: 1px;
+  border-color: rgb(228, 21, 21);
+  width: 100%;
+}
+
+.genres p {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.genresTitleBox {
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.genresTitleBox:hover {
+  color: rgb(208, 205, 205);
+}
+
+.pBox {
+  background-color: rgb(50, 47, 47);
+  width: 100px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 2px;
+  cursor: pointer;
+}
+
+.pBoxActive {
+  background-color: rgb(50, 47, 47);
+  width: 100px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 2px;
+  cursor: pointer;
+  color: red;
+}
+
+.pBox:hover {
+  background-color: rgb(70, 65, 65);
+}
+
+.iconBox {
+  padding: 18px 20px;
+  border-radius: 100px;
+  background-color: white;
+}
+
+.iconPlus {
+  height: 15px;
+  width: 15px;
+  color: red;
+}
+
+.outerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  margin-left: 50px;
+}
+
+.boxR {
+  margin-top: 20px;
+  width: 75px;
+  border-radius: 100px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.boxR:hover {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}
+
+.searchFilterBox {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 30px;
+}
+
+.filterBox {
+  background-color: black;
+  color: #757575;
+  border: solid red 1px;
+  height: 27px;
+  padding: 0px 5px;
+  border-radius: 3px;
+}
+
+.filter {
+  margin-top: 1%;
 }

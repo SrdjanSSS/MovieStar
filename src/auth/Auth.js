@@ -11,12 +11,14 @@ const Auth = () => {
   };
 
   return (
-    <div className={styles.container}>
-      {active ? (
-        <Login handleChange={handleChange} />
-      ) : (
-        <Signup handleChange={handleChange} />
-      )}
+    <div className={styles.navigation}>
+      <div className={styles.container}>
+        {active ? (
+          <Login handleChange={handleChange} />
+        ) : (
+          <Signup handleChange={handleChange} />
+        )}
+      </div>
     </div>
   );
 };

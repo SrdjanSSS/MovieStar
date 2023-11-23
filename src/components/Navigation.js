@@ -9,13 +9,15 @@ import { logoutUser } from "../features/UserSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { motion } from "framer-motion";
+import { Link as PathLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ setLoginPopup }) => {
   const user = useSelector((state) => state.data.user.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [scrolling, setScrolling] = useState(false);
-  const [activeDot, setActiveDot] = useState(null);
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -29,10 +31,10 @@ const Navigation = () => {
   const handleLogout = () => {
     dispatch(logoutUser());
     signOut(auth);
-  };
 
-  const handleClick = (index) => {
-    setActiveDot(index === activeDot ? null : index);
+    if (user) {
+      navigate("/auth");
+    }
   };
 
   const handleScroll = () => {
@@ -40,6 +42,15 @@ const Navigation = () => {
       setScrolling(true);
     } else {
       setScrolling(false);
+    }
+  };
+
+  const handleLoginPopup = () => {
+    if (!user) {
+      setLoginPopup(true);
+      console.log("its trueeeee");
+    } else {
+      setLoginPopup(false);
     }
   };
 
@@ -53,44 +64,41 @@ const Navigation = () => {
   return (
     <div className={`${styles.navbar} ${scrolling ? styles.scrolling : ""}`}>
       <div className={styles.titleBox}>
-        <img src={pageTitle} alt="" />
+        <PathLink to={"/"}>
+          <img src={pageTitle} alt="" />
+        </PathLink>
       </div>
       <div className={styles.navBox}>
         <Link to="home" smooth={true} duration={500}>
-          <div
-            className={`${styles.acitve} ${
-              activeDot === 0 ? styles.acitve : ""
-            }`}
-          >
-            {activeDot === 0 && <div className={styles.dot}></div>}
-            <h3 onClick={() => handleClick(0)}>Home</h3>
-          </div>
+          <h3 className={styles.homeH3}>Home</h3>
         </Link>
         <Link to="favorites" smooth={true} duration={800}>
-          <div
-            className={`${styles.acitve} ${
-              activeDot === 1 ? styles.acitve : ""
-            }`}
-          >
-            {activeDot === 1 && <div className={styles.dot}></div>}
-            <h3 onClick={() => handleClick(1)}>Favorites</h3>
-          </div>
+          <h3 onClick={handleLoginPopup} className={styles.favoritesH3}>
+            Favorites
+          </h3>
         </Link>
         <Link to="movies" smooth={true} duration={500}>
-          <div
-            className={`${styles.acitve} ${
-              activeDot === 2 ? styles.acitve : ""
-            }`}
-          >
-            {activeDot === 2 && <div className={styles.dot}></div>}
-            <h3 onClick={() => handleClick(2)}>Movies</h3>
-          </div>
+          <h3 className={styles.moviesH3}>Movies</h3>
         </Link>
         <div className={styles.profileContainer}>
-          <div onClick={toggleMenu} className={styles.profileBox}>
-            <h3 className={styles.username}>{user.username}</h3>
-            <FontAwesomeIcon className={styles.userIcon} icon={faCircleUser} />
-          </div>
+          {user ? (
+            <div onClick={toggleMenu} className={styles.profileBox}>
+              <h3 className={styles.username}>{user.username}</h3>
+              <FontAwesomeIcon
+                className={styles.userIcon}
+                icon={faCircleUser}
+              />
+            </div>
+          ) : (
+            <PathLink
+              style={{ color: "white", textDecoration: "none" }}
+              to="/auth"
+            >
+              <div className={styles.loginBtnBox}>
+                <h3>Log In</h3>
+              </div>
+            </PathLink>
+          )}
           {menu && (
             <motion.div
               initial={{ opacity: 0 }}

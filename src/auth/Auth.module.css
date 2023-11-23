@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 721px;
-  background-color: #3f0d12;
-  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  height: 715px;
+  min-height: 400px;
+  background-image: url("../images/Netflix-Background.jpg");
+  background-size: cover;
 }
