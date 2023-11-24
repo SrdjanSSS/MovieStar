@@ -111,8 +111,31 @@
   justify-content: right;
 }
 
-.youtube {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.youtubeContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.closeBtn {
+  position: absolute;
+  height: 4%;
+  width: 5%;
+  bottom: 12%;
+  left: 8.3%;
+  z-index: 3;
+  min-width: 40px;
+  min-height: 20px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background-color: #100f0f;
 }

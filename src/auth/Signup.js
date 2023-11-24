@@ -44,9 +44,7 @@ const Signup = ({ handleChange }) => {
     }
   }, [user, navigate]);
 
-  const handleSignUp = (event) => {
-    // event.preventDefault();
-
+  const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         setDoc(doc(db, "users", email), {
@@ -70,14 +68,22 @@ const Signup = ({ handleChange }) => {
       })
       .catch((err) => {
         if (password.length !== 0 && username.length !== 0) {
-          if (email.includes("@" && ".com")) {
-            console.log(email.includes("@" && ".com") && usernameError);
-            setEmailAlreadyExists(true);
-            setEmailError(false);
-            setEmailInclude(false);
+          if (validEmailFormat.test(email)) {
+            if (email.includes("@" && ".com")) {
+              setEmailAlreadyExists(true);
+              setEmailError(false);
+              setEmailInclude(false);
+            }
           }
         }
       });
+
+    const validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (!validEmailFormat.test(email)) {
+      setEmailAlreadyExists(false);
+      setEmailInclude(true);
+    }
 
     if (email.length === 0) {
       setEmailError(true);

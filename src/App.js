@@ -16,7 +16,6 @@ import { faXmarkSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function App() {
-  const user = useSelector((state) => state.data.user.user);
   const reduxLoading = useSelector((state) => state.data.user.isLoading);
   const dispatch = useDispatch();
 

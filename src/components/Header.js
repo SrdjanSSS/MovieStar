@@ -14,6 +14,7 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
 
   const [trailerPopup, setTrailerPopup] = useState(false);
   const [isTrailerClicked, setIsTrailerClicked] = useState(false);
+  const [trailerPlayed, setTrailerPlayed] = useState(false);
 
   const rednderTrailer = () => {
     if (trailerPopup && selectedMovie.videos && selectedMovie.videos.results) {
@@ -22,12 +23,28 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
       );
 
       if (trailer && trailer.key) {
-        return <YouTube className={styles.youtube} videoId={trailer.key} />;
+        return (
+          <>
+            <YouTube
+              className={styles.youtubeContainer}
+              videoId={trailer.key}
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: {
+                  autoplay: 1,
+                  controls: 0,
+                },
+              }}
+            />
+            {trailer && trailer.key ? renderCloseBtn() : ""}
+          </>
+        );
       } else {
         return (
           <div className={styles.erorrMessageBox}>
             <FontAwesomeIcon className={styles.iconSad} icon={faFaceFrown} />
-            <p>Sorry, currently there is no trailer for this film.</p>
+            <p>Sorry, currently there is no trailer for this movie.</p>
           </div>
         );
       }
@@ -48,6 +65,21 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
     } else {
       setLoginPopup(true);
     }
+  };
+
+  const renderCloseBtn = () => {
+    return (
+      <button
+        onClick={() => {
+          setTrailerPopup(false);
+          setIsTrailerClicked(false);
+          setTrailerPlayed(false);
+        }}
+        className={styles.closeBtn}
+      >
+        Close
+      </button>
+    );
   };
 
   return (
