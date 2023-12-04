@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  min-width: 200px;
   padding: 5% 4%;
   min-height: fit-content;
   background-color: black;
@@ -10,7 +9,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 300px;
 }
 
 .searchBox {
@@ -59,8 +57,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   margin-bottom: 100px;
-  min-width: 500px;
 }
 
 .genresContainer {
@@ -181,4 +179,234 @@
 
 .filter {
   margin-top: 1%;
+}
+
+.sectionTitleH3 {
+  font-size: clamp(12px, 4vw, 22px);
+  margin-bottom: 15px;
+}
+
+.firstSectionTittleH3 {
+  font-size: clamp(12px, 4vw, 22px);
+}
+
+@media screen and (max-width: 790px) {
+  .inputBox {
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(228, 21, 21);
+    border-radius: 3px;
+    width: 58px;
+    transition: width 0.5s ease-in-out;
+    font-size: 10px;
+  }
+
+  .input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+    transition: width 0.5s ease-in-out;
+    font-size: 10px;
+  }
+
+  .inputClicked {
+    width: 25vw;
+  }
+
+  .filterBox {
+    background-color: black;
+    color: #757575;
+    border: solid red 1px;
+    padding-left: 2px;
+    border-radius: 3px;
+    font-size: 10px;
+    height: 22.8px;
+    width: 70px;
+  }
+
+  .genresContainer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .genresTitleBox {
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 11px;
+  }
+
+  .genres p {
+    font-size: 10px;
+  }
+
+  .genres {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 2%;
+    text-align: center;
+    gap: 15px;
+    border: solid;
+    padding: 10px 0px;
+    border-width: 1px;
+    border-color: rgb(228, 21, 21);
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 431px) {
+  .searchBox {
+    padding: 30px 10px;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to right, red, black);
+    border-image-slice: 1;
+  }
+
+  .inputBox {
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(228, 21, 21);
+    border-radius: 3px;
+    width: 58px;
+    transition: width 0.5s ease-in-out;
+    font-size: 10px;
+  }
+
+  .input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+    transition: width 0.5s ease-in-out;
+    font-size: 10px;
+  }
+
+  .filterBox {
+    background-color: black;
+    color: #757575;
+    border: solid red 1px;
+    padding-left: 2px;
+    border-radius: 3px;
+    font-size: 10px;
+    height: 22.8px;
+    width: 55px;
+  }
+
+  .filterBox option {
+    font-size: 8px;
+  }
+
+  .searchFilterBox {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .inputClicked {
+    width: 25vw;
+  }
+
+  .genresContainer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .genres {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 2%;
+    text-align: center;
+    gap: 10px;
+    border: solid;
+    padding: 10px 0px;
+    border-width: 1px;
+    border-color: rgb(228, 21, 21);
+    width: 100%;
+  }
+
+  .genres p {
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .genresTitleBox {
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 10px;
+  }
+
+  .genresTitleBox:hover {
+    color: rgb(208, 205, 205);
+  }
+
+  .pBox {
+    background-color: rgb(50, 47, 47);
+    width: 100px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .genres p {
+    font-size: 10px;
+  }
+
+  .pBoxActive {
+    background-color: rgb(50, 47, 47);
+    width: 100px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: red;
+  }
+
+  .pBox:hover {
+    background-color: rgb(70, 65, 65);
+  }
+
+  .movieBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 55px;
+    margin-top: 40px;
+  }
+
+  .outerBox,
+  .boxR {
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 351px) {
+  .movieBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

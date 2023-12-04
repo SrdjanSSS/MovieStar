@@ -116,7 +116,7 @@ const MoviesBox = ({
     <div className={styles.container} id="movies">
       <div className={styles.searchBox}>
         <div className={styles.inputContainer}>
-          <h3>DISCOVER MOVIES</h3>
+          <h3 className={styles.firstSectionTittleH3}>DISCOVER MOVIES</h3>
           <div className={styles.searchFilterBox}>
             <div
               className={`${styles.inputBox} ${
@@ -181,37 +181,39 @@ const MoviesBox = ({
           )}
         </div>
       </div>
-      <div className={styles.movieBox}>
-        {movies.map((item) => (
-          <Movie
-            item={item}
-            selectMovie={selectMovie}
-            title={item.title}
-            image={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-            key={item.id}
-            year={item.release_date}
-            backdrop={item.backdrop_path}
-            description={item.overview}
-            setLoginPopup={setLoginPopup}
-            vote={item.vote_average.toFixed(1)}
-            deleteShow={deleteShow}
-            addedMovies={addedMovies}
-          />
-        ))}
-        <div
-          onClick={() => fetchMoreMovies(redP, search)}
-          className={styles.outerBox}
-        >
-          <div className={styles.boxR}>
-            <div className={styles.iconBox}>
-              <FontAwesomeIcon className={styles.iconPlus} icon={faPlus} />
+      <div className={styles.movieBoxContainer}>
+        <div className={styles.movieBox}>
+          {movies.map((item) => (
+            <Movie
+              item={item}
+              selectMovie={selectMovie}
+              title={item.title}
+              image={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+              key={item.id}
+              year={item.release_date}
+              backdrop={item.backdrop_path}
+              description={item.overview}
+              setLoginPopup={setLoginPopup}
+              vote={item.vote_average.toFixed(1)}
+              deleteShow={deleteShow}
+              addedMovies={addedMovies}
+            />
+          ))}
+          <div
+            onClick={() => fetchMoreMovies(redP, search)}
+            className={styles.outerBox}
+          >
+            <div className={styles.boxR}>
+              <div className={styles.iconBox}>
+                <FontAwesomeIcon className={styles.iconPlus} icon={faPlus} />
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.upencoming}>
         <div className={styles.searchBox}>
-          <h3>COMMING SOON</h3>
+          <h3 className={styles.sectionTitleH3}>COMMING SOON</h3>
           <div className={styles.filter}>
             <select
               onChange={(e) =>
@@ -260,7 +262,7 @@ const MoviesBox = ({
       </div>
       <div className={styles.awardWinning}>
         <div className={styles.searchBox}>
-          <h3>AWARD-WINNING</h3>
+          <h3 className={styles.sectionTitleH3}>AWARD-WINNING</h3>
           <div className={styles.filter}>
             <select
               onChange={(e) =>
@@ -313,7 +315,7 @@ const MoviesBox = ({
       {user ? (
         <div className={styles.favorites} id="favorites">
           <div className={styles.searchBox}>
-            <h3>FAVORITES</h3>
+            <h3 className={styles.sectionTitleH3}>FAVORITES</h3>
           </div>
           <div className={styles.movieBox}>
             {addedMovies.map((item, id) => (

@@ -42,25 +42,25 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 20%;
-  left: 27%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 700px;
   height: 500px;
-  background: linear-gradient(147deg, #4d4855 0%, #000000 74%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   z-index: 1000;
   text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(147deg, #242324 0%, #000000 74%);
 }
 
-.login-popup-container::before {
-  content: "";
+.background-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: -1;
+  z-index: 999;
 }
 
 .title-img {
@@ -94,6 +94,8 @@
   font-weight: bold;
   font-size: 18px;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .btn-box button:hover {
@@ -107,4 +109,59 @@
   color: red;
   height: 25px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 790px) {
+  .login-popup-container {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 500px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  }
+
+  .background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+  }
+
+  .title-img {
+    height: 100px;
+    width: 180px;
+    margin-bottom: 40px;
+  }
+
+  .login-popup-container h2 {
+    color: #f3eb42;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .login-popup-container h3 {
+    color: #261c34;
+    margin-bottom: 50px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 431px) {
+  .loader-container {
+    position: absolute;
+    left: 36%;
+    top: 45%;
+  }
 }

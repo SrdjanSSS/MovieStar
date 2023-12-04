@@ -15,6 +15,7 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
   const [trailerPopup, setTrailerPopup] = useState(false);
   const [isTrailerClicked, setIsTrailerClicked] = useState(false);
   const [trailerPlayed, setTrailerPlayed] = useState(false);
+  const [movieInfo, setMovieInfo] = useState(false);
 
   const rednderTrailer = () => {
     if (trailerPopup && selectedMovie.videos && selectedMovie.videos.results) {
@@ -82,6 +83,14 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
     );
   };
 
+  const toggleInfo = () => {
+    if (!movieInfo) {
+      setMovieInfo(true);
+    } else {
+      setMovieInfo(false);
+    }
+  };
+
   return (
     <div
       id="home"
@@ -94,13 +103,24 @@ const Header = ({ movies, selectedMovie, setLoginPopup }) => {
     >
       <div className={styles.boxContainer}>
         <div className={styles.boxL}>
-          <h1>{selectedMovie.title}</h1>
-          <h4>{selectedMovie.overview}</h4>
+          <div>
+            <h1>{selectedMovie.title}</h1>
+            <div>
+              <button onClick={toggleInfo} className={styles.infoBtn}>
+                Info
+              </button>
+            </div>
+          </div>
+          <h4 className={movieInfo ? "" : styles.infoH4}>
+            {selectedMovie.overview}
+          </h4>
         </div>
         <div className={styles.boxR}>
           <div className={styles.outerBox}>
             {selectedMovie.videos ? rednderTrailer() : null}
-            <h2>{isTrailerClicked ? "Close Trailer" : "Play Trailer"}</h2>
+            <h2 className={styles.trailerH2}>
+              {isTrailerClicked ? "Close Trailer" : "Play Trailer"}
+            </h2>
             <div onClick={handleTrailerPopup} className={styles.trailerBtnBox}>
               <div className={styles.iconBox}>
                 {isTrailerClicked ? (

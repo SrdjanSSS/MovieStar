@@ -45,38 +45,46 @@ const Signup = ({ handleChange }) => {
   }, [user, navigate]);
 
   const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        setDoc(doc(db, "users", email), {
-          favoriteShows: [],
-        });
-      })
-      .then(() => {
-        signInWithEmailAndPassword(auth, email, password).then(() => {
-          updateProfile(auth.currentUser, {
-            displayName: username,
-          }).then(() => {
-            dispatch(
-              loginUser({
-                uid: auth.currentUser.uid,
-                username: username,
-                email: auth.currentUser.email,
-              })
-            );
+    if (username.length === 0) {
+      setUsernameError(true);
+      return;
+    } else if (username.length >= 8) {
+      setUsernameLength(true);
+      return;
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          setDoc(doc(db, "users", email), {
+            favoriteShows: [],
           });
-        });
-      })
-      .catch((err) => {
-        if (password.length !== 0 && username.length !== 0) {
-          if (validEmailFormat.test(email)) {
-            if (email.includes("@" && ".com")) {
-              setEmailAlreadyExists(true);
-              setEmailError(false);
-              setEmailInclude(false);
+        })
+        .then(() => {
+          signInWithEmailAndPassword(auth, email, password).then(() => {
+            updateProfile(auth.currentUser, {
+              displayName: username,
+            }).then(() => {
+              dispatch(
+                loginUser({
+                  uid: auth.currentUser.uid,
+                  username: username,
+                  email: auth.currentUser.email,
+                })
+              );
+            });
+          });
+        })
+        .catch((err) => {
+          if (password.length !== 0 && username.length !== 0) {
+            if (validEmailFormat.test(email)) {
+              if (email.includes("@" && ".com")) {
+                setEmailAlreadyExists(true);
+                setEmailError(false);
+                setEmailInclude(false);
+              }
             }
           }
-        }
-      });
+        });
+    }
 
     const validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
 
@@ -93,12 +101,6 @@ const Signup = ({ handleChange }) => {
     if (email.length > 0 && !email.includes("@" && ".com")) {
       setEmailInclude(true);
       setEmailError(false);
-    }
-
-    if (username.length === 0) {
-      setUsernameError(true);
-    } else if (username.length > 8) {
-      setUsernameLength(true);
     }
 
     if (password.length === 0) {

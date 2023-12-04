@@ -48,7 +48,6 @@ const Navigation = ({ setLoginPopup }) => {
   const handleLoginPopup = () => {
     if (!user) {
       setLoginPopup(true);
-      console.log("its trueeeee");
     } else {
       setLoginPopup(false);
     }

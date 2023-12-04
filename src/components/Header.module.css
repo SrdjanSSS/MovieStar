@@ -5,6 +5,9 @@
   height: 100vh;
   width: 100%;
   z-index: 1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .imageOverlay {
@@ -18,7 +21,7 @@
 
 .boxContainer {
   align-self: flex-end;
-  padding: 0% 7% 8% 7%;
+  padding: 0% 7% 10% 7%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -49,9 +52,10 @@
   align-items: center;
 }
 
-.outerBox h2 {
+.trailerH2 {
   padding-top: 1%;
   text-shadow: 2px 2px 4px #000000;
+  font-size: clamp(15px, 3vw, 25px);
 }
 
 .trailerBtnBox {
@@ -70,8 +74,8 @@
 
 .boxL h1 {
   align-self: flex-end;
-  font-size: 3vw;
-  margin-bottom: 5%;
+  font-size: clamp(25px, 2.5vw, 40px);
+  margin-bottom: clamp(10px, 2%, 20px);
   font-weight: bold;
   cursor: default;
   text-shadow: 2px 2px 4px #000000;
@@ -84,9 +88,14 @@
 
 .boxL h4 {
   font-style: italic;
-  font-weight: 100;
   text-shadow: 2px 2px 4px #000000;
-  font-size: 2.5vh;
+  font-size: clamp(10px, 1vw, 16px);
+  font-weight: 100;
+  font-style: italic;
+}
+
+.infoH4 {
+  display: none;
 }
 
 .iconSad {
@@ -138,4 +147,150 @@
 
 .closeBtn:hover {
   background-color: #100f0f;
+}
+
+.infoBtn {
+  background-color: rgb(0, 0, 0);
+  border: 1px solid red;
+  color: white;
+  cursor: pointer;
+  height: 28px;
+  width: 70px;
+  font-style: italic;
+  font-weight: 100;
+  margin-bottom: 2%;
+}
+
+.infoBtn:hover {
+  background-color: #111111;
+}
+
+@media screen and (max-width: 1281px) {
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .boxContainer {
+    align-self: flex-end;
+    padding: 0% 5% 8% 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 55vh;
+    width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .trailerBtnBox {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+  }
+
+  .iconBox {
+    display: flex;
+    border-radius: 100px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 431px) {
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .boxContainer {
+    align-self: flex-end;
+    padding: 0% 5% 8% 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .trailerBtnBox {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+  }
+
+  .iconBox {
+    display: flex;
+    border-radius: 100px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+  }
+
+  .infoBtn {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid red;
+    color: white;
+    cursor: pointer;
+    height: 20px;
+    width: 40px;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .iconSad {
+    height: 30px;
+    opacity: 0.8;
+  }
+
+  .erorrMessageBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    padding-bottom: 10px;
+  }
+
+  .erorrMessageBox p {
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 10px;
+    text-align: center;
+  }
 }

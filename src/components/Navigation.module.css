@@ -20,14 +20,16 @@
   justify-content: space-between;
   align-items: center;
   width: 30%;
-  min-width: 300px;
+  min-width: 200px;
 }
 
 .navBox h3,
 h1 {
   cursor: pointer;
   font-weight: 100;
+  font-size: clamp(10.5px, 1.2vw, 25px);
   text-shadow: 2px 2px 4px #000000;
+  margin: auto;
 }
 
 .profileBox {
@@ -37,8 +39,8 @@ h1 {
 
 .titleBox img {
   height: 70%;
-  min-height: 40px;
-  min-width: 90px;
+  min-height: 30px;
+  min-width: 60px;
   width: 15%;
   cursor: pointer;
 }
@@ -101,4 +103,77 @@ h1 {
 
 .moviesH3:hover {
   border-bottom: solid red;
+}
+
+@media screen and (max-width: 431px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3% 5%;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+  }
+
+  .scrolling {
+    background-color: rgb(12, 12, 12);
+  }
+
+  .userIcon {
+    cursor: pointer;
+    color: red;
+    height: 20%;
+    max-height: 35px;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  .fallingMenu {
+    position: absolute;
+    background-color: rgb(69, 66, 66);
+    border-radius: 5px;
+    top: 30px;
+    right: 0px;
+    font-weight: 500;
+    font-size: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .homeH3:hover {
+    border-bottom: solid red;
+  }
+
+  .navBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+    min-width: 190px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .navBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+    min-width: 170px;
+  }
+
+  .navBox h3,
+  h1 {
+    cursor: pointer;
+    font-weight: 100;
+    font-size: clamp(9px, 1.2vw, 25px);
+    text-shadow: 2px 2px 4px #000000;
+    margin: auto;
+  }
 }

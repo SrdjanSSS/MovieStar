@@ -293,29 +293,36 @@ function App() {
                         genres={genres}
                       />
                       {loginPopup ? (
-                        <div className="login-popup-container">
-                          <FontAwesomeIcon
-                            className="icon"
-                            icon={faXmarkSquare}
-                            onClick={() => setLoginPopup(false)}
-                          />
-                          <div className="login-popup-box">
-                            <img className="title-img" src={pageTitle} alt="" />
-                            <h2>Log In or Create Account</h2>
-                            <h3>
-                              Log in to add movies to your favorite watchlist,
-                              watch trailers and more! New here? Create a
-                              Crunchyroll account.
-                            </h3>
-                            <div className="btn-box">
-                              <Link to="/auth">
-                                <button onClick={() => setLoginPopup(false)}>
-                                  Sing In
-                                </button>
-                              </Link>
+                        <>
+                          <div className="background-overlay"></div>
+                          <div className="login-popup-container">
+                            <FontAwesomeIcon
+                              className="icon"
+                              icon={faXmarkSquare}
+                              onClick={() => setLoginPopup(false)}
+                            />
+                            <div className="login-popup-box">
+                              <img
+                                className="title-img"
+                                src={pageTitle}
+                                alt=""
+                              />
+                              <h2>Log In or Create Account</h2>
+                              <h3>
+                                Log in to add movies to your favorite watchlist,
+                                watch trailers and more! New here? Create a Star
+                                Movies account.
+                              </h3>
+                              <div className="btn-box">
+                                <Link to="/auth">
+                                  <button onClick={() => setLoginPopup(false)}>
+                                    Sing In
+                                  </button>
+                                </Link>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </>
                       ) : (
                         ""
                       )}
